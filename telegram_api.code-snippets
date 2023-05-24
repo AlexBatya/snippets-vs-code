@@ -7,6 +7,17 @@
 	"description": "Для инициализации бота"
 	},	
 
+	"": {
+		"prefix": "",
+		"body": [
+			"bot.on('callback_query', query => {",
+			"  if(query.data === '$1'){",
+			"",
+			"  }",
+			"})"
+		],
+		"description": ""
+	},
 
 	"telegram-inline-keyboard": {
 		"prefix": "telegram_inline-keyboard",
