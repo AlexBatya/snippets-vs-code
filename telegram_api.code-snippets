@@ -1,0 +1,71 @@
+{
+	"telegram-api": {
+	"prefix": "telegram-api",
+	"body": [
+		"const bot = new telegram_bot(TELEGRAM_API_KEY, {polling: true });"
+	],
+	"description": "Для инициализации бота"
+	},	
+
+
+	"telegram-inline-keyboard": {
+		"prefix": "telegram_inline-keyboard",
+		"body": [
+			"var $1 = {",
+			"  parse_mode: 'markdown',",
+			"  disable_web_page_preview: false,",
+			"  reply_markup: JSON.stringify({",
+			"    resize_keyboard: true,",
+			"    inline_keyboard: [",
+			"      [{ text: '$2', callback_data: '$3' }],",
+			"    ]",
+			"  })",
+			"};"
+		],
+		"description": ""
+	},
+
+	"telegram-keyboard": {
+		"prefix": "telegram__buttons",
+		"body": [
+		"const $1 = {",
+		"    parse_mode: 'markdown',",
+		"    disable_web_page_preview: false,",
+		"    reply_markup: {",
+		"        resize_keyboard: true,",
+		"        keyboard: [ ",
+		"            [ {text: $2 }],",
+		"        ]",
+		"    }",
+		"}"
+		],
+		"description": ""
+	},
+
+	"telegram-magO": {
+		"prefix": "telegram_msgON",
+		"body": [
+			"const $1 = (question, callback) => new Promise(res => {",
+			"  bot.on('message', async msg => {",
+			"    if(msg.text == question){",
+			"      callback()",
+			"      res()",
+			"    }",
+			"  })",
+			"})"
+			],
+		"description": ""
+	},
+
+	"telegram-msgT": {
+		"prefix": "telegram_msgText",
+		"body": [
+			"bot.onText(/\\/start/, async msg =>{",
+			"  bot.sendMessage(msg.chat.id, '$1',$2)",
+			"",
+			"})"
+		],
+		"description": ""
+	}
+	
+}
