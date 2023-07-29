@@ -149,7 +149,7 @@
 	},
 
 	"popup__html": {
-		"scope": "html, ejs, php",
+		"scope": "html, ejs, php, js, jsx",
 		"prefix": "popup_html",
 		"body": [
 		"<div class='$1'>",

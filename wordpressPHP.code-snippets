@@ -1,0 +1,53 @@
+{
+	"post_php_wordpress": {
+  	"prefix": "post_wordpress",
+  	"body": [
+    "<?php",
+    "    global \\$post;",
+    "",
+    "    \\$myposts = get_posts([ ",
+    "        'post_type' => 'post', ",
+    "        'post_status' => 'publish', // Статус публикации",
+    "        'posts_per_page' => '2', //Колличество записей на вывод",
+    "        'paged' => 1, // номер страницы на вывод",
+    "        'category'    => get_cat_ID('Слайдер (Наши работы)'), ",
+    "        'numberposts' => -1,",
+    "        'cat' => 1 // id поста ",
+    "    ]);",
+    "",
+    "    if( \\$myposts ){",
+    "        foreach( \\$myposts as \\$post ){",
+    "            setup_postdata( \\$post );",
+    "            ?>",
+    "                $1",
+    "            <?php ",
+    "        }",
+    "        } else {",
+    "            // Постов не найдено",
+    "        }",
+    "",
+    "    wp_reset_postdata(); // Сбрасываем \\$post",
+    "?>",
+    "                          "
+  	],
+  	"description": ""
+	},
+	"child_php_wordpress_cat": {
+	"prefix": "child_cat_wordpress",
+	"body": [
+	"<?php",
+	"    \\$term_id     = 6; // get_queried_object()->term_id; - ID текущей рубрики (динамически)",
+	"    \\$tax_name    = 'category';",
+	"    \\$term_childs = get_term_children( \\$term_id, \\$tax_name );",
+	"",
+	"    foreach ( \\$term_childs as \\$child ) {",
+	"        \\$term = get_term_by( 'id', \\$child, \\$tax_name );?>",
+	"            $1",
+	"        <?php",
+	"    }",
+	"",
+	"?>"
+	],
+	"description": ""
+	}
+}
